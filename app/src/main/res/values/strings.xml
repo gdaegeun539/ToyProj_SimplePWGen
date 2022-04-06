@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Password Generator</string>
+    <string name="pw_length">Password Length:</string>
+    <string name="symbols">Include Symbols:</string>
+    <string name="numbers">Include Numbers:</string>
+    <string name="lowercase">Include Lowercase Characters:</string>
+    <string name="uppercase">Include Uppercase Characters:</string>
+    <string name="similar">Exclude Similar Characters:</string>
+    <string name="ambiguous">Exclude Ambiguous Characters:</string>
+    <string name="save_preference">Save My Preference:</string>
+    <string name="generate_pw">Generate Password</string>
+    <string name="copy">Copy</string>
+    <string name="hint">Password is generated here</string>
+    <string name="hint_length">Supports 6 ~ 128</string>
+    <string name="top_settings">Settings</string>
+</resources>
