@@ -10,7 +10,10 @@ import kr.fndna.pw_generator.databinding.ActivityMainBinding
 import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
+    /** chkset 배열 확인 요소
+     * 0번 특수문자 1번 숫자 2번 소문자 3번 대문자 4번 비슷한거제외 5번 모호한거제외*/
     var chkSet = BooleanArray(6)
+    var pwdLen: Int = 0
     lateinit var binding :ActivityMainBinding
     val logic :GenerateLogic = GenerateLogic(chkSet)
 
