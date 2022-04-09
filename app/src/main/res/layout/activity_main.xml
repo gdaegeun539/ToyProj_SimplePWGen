@@ -45,11 +45,12 @@
             android:textSize="24sp" />
 
         <EditText
+            android:id="@+id/input_length"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:hint="@string/hint_length"
-            android:inputType="numberDecimal" />
+            android:inputType="number" />
     </LinearLayout>
 
     <androidx.appcompat.widget.SwitchCompat

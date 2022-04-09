@@ -12,5 +12,7 @@
     <string name="copy">Copy</string>
     <string name="hint">Password is generated here</string>
     <string name="hint_length">Supports 6 ~ 128</string>
-    <string name="top_settings">Settings</string>
+    <string name="top_settings">Options</string>
+    <string name="pattern_not_match">Input length or option not Match!\nCheck the length and options.</string>
+    <string name="generate_successful">Password generation was successful.</string>
 </resources>

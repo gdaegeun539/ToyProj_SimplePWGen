@@ -14,4 +14,6 @@
     <string name="hint">비밀번호가 여기에 나옵니다</string>
     <string name="top_settings">설정</string>
     <string name="hint_length">6 ~ 128자까지 생성</string>
+    <string name="pattern_not_match">입력한 길이나 설정이 맞지 않습니다!\\n길이와 조건을 다시 확인하세요.</string>
+    <string name="generate_successful">비밀번호 생성이 완료되었습니다.</string>
 </resources>
