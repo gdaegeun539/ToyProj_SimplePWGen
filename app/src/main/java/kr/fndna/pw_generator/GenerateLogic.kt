@@ -1,27 +1,23 @@
 package kr.fndna.pw_generator
 
-import android.content.Context
 import android.util.Log
 
-class GenerateLogic(chkSet: BooleanArray, ln: Long) {
-    var len: Long = ln
-    var opt: BooleanArray = chkSet
+class GenerateLogic(val opt: BooleanArray, val len: Long) {
+//    var len: Long = ln
+//    var opt: BooleanArray = chkSet
     var allowedChars: MutableList<Char> = mutableListOf()
     var makeString: String = ""
 
     // 생성 로직
     fun generate(): String {
-        Log.d("GenerateLogic", "$len")
-        Log.d("GenerateLogic", "${opt[0]} / ${opt[1]}")
         if (len in 6..129) { // 길이 맞으면 수행
             patternCheck()
-            Log.d("GenerageLogic", "${allowedChars.isEmpty()}")
             if (allowedChars.isNotEmpty()) { // 조건 하나라도 체크하면 수행
                 for (it in 0..len) { // 생성
                     makeString += allowedChars.random()
                 }
             }
-        } // 길이 안 맞거나 조건 체크 안하면 빈 문자열 반환
+        } // 길이 안 맞거나 사용자가 조건 체크 안하면 빈 문자열 반환
         return makeString
     }
 

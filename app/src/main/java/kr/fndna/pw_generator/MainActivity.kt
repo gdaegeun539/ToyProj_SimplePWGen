@@ -5,6 +5,8 @@ import android.content.ClipboardManager
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import kr.fndna.pw_generator.databinding.ActivityMainBinding
 
@@ -16,11 +18,15 @@ class MainActivity : AppCompatActivity() {
     var makeString: String = ""
     lateinit var binding :ActivityMainBinding
     lateinit var logic :GenerateLogic
+    lateinit var optSaveLoader: OptionsSaveLoadLogic
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+
+        optSaveLoader = OptionsSaveLoadLogic(this, chkSet)
 
         // 스위치 리스너 로직
         switchListener()
@@ -31,25 +37,43 @@ class MainActivity : AppCompatActivity() {
             val txt: CharSequence = binding.passwordText.text // Editable 타입
             val clip = ClipData.newPlainText(txt, txt)
             clipboard.setPrimaryClip(clip)
-            Toast.makeText(this, "클립보드에 복사되었습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.clipboard_complete, Toast.LENGTH_SHORT).show()
         }
 
         // 생성 버튼 리스너 로직
         binding.generateBtn.setOnClickListener {
-            pwdLen = binding.inputLength.text.toString().toLong() // 길이
-            logic = GenerateLogic(chkSet, pwdLen) // 객체 생성
-            makeString = logic.generate() // 문자열 생성
+            var pwdLenStr = binding.inputLength.text.toString()
+            if (pwdLenStr.isEmpty()) { // 혹시나 길이 입력 안 할수 있음
+                Toast.makeText(this, R.string.pattern_not_match, Toast.LENGTH_SHORT).show()
+            } else {
+                pwdLen = binding.inputLength.text.toString().toLong() // 길이
+                logic = GenerateLogic(chkSet, pwdLen) // 객체 생성
+                makeString = logic.generate() // 문자열 생성
 
-            when (makeString.isEmpty()) {
-                true -> { // 길이나 옵션 안맞았을때
-                    Toast.makeText(this, R.string.pattern_not_match, Toast.LENGTH_SHORT).show()
-                }
-                false -> {
-                    binding.passwordText.setText(makeString)
-                    Toast.makeText(this, R.string.generate_successful, Toast.LENGTH_SHORT).show()
+                when (makeString.isEmpty()) {
+                    true -> { // 길이나 옵션 안맞았을때
+                        Toast.makeText(this, R.string.pattern_not_match, Toast.LENGTH_SHORT).show()
+                    }
+                    false -> {
+                        binding.passwordText.setText(makeString)
+                        Toast.makeText(this, R.string.generate_successful, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
+    }
+
+    // 툴바 초기화
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+        applicationContext
+        //todo 내장 접근 밑 저장 로직 수행
+        return true
     }
 
     // 스위치 리스너 로직
