@@ -7,7 +7,6 @@
     <string name="uppercase">Include Uppercase Characters:</string>
     <string name="similar">Exclude Similar Characters:</string>
     <string name="ambiguous">Exclude Ambiguous Characters:</string>
-    <string name="save_preference">Save My Preference:</string>
     <string name="generate_pw">Generate Password</string>
     <string name="copy">Copy</string>
     <string name="hint">Password to be generated here</string>
@@ -17,4 +16,5 @@
     <string name="generate_successful">Password generation was successful.</string>
     <string name="clipboard_complete">Copied to clipboard.</string>
     <string name="save_options">Save Options</string>
+    <string name="save_toast">Options was saved.</string>
 </resources>

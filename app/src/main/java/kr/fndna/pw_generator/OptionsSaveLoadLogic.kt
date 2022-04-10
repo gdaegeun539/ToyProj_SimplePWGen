@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.Log
 import java.io.File
 
-class OptionsSaveLoadLogic(appContext: Context, var opt: BooleanArray) {
-    val file = File(appContext.getExternalFilesDir(null), "options.dat")
+class OptionsSaveLoadLogic(appContext: Context?, var opt: BooleanArray) {
+    val file = File(appContext?.getExternalFilesDir(null), "options.dat")
     var optString = ""
 
     // 설정 저장
@@ -21,23 +21,25 @@ class OptionsSaveLoadLogic(appContext: Context, var opt: BooleanArray) {
     fun loadChkSet(): BooleanArray {
         var inputReader = file.reader().buffered()
         optString = inputReader.readLine()
+
+        opt = strToOpt()
         return opt
     }
 
-    // 배열 문자열화 - true/false가 문자열화됨
-    private fun optToStr() {
+    // 배열 문자열화 - true/false 가 문자열화됨
+    fun optToStr() {
+        // 돌면서 더해줌
         for (op in opt) {
-            optString += op.toString()
+            optString += "$op "
         }
     }
     
     // 문자열 배열화
-    private fun strToOpt() {
-        var idx = 0
-        for (it in optString.asIterable()) {
-            Log.d("OptionsSaveLogic", it.toString())
-//            opt[idx++] = java.lang.Boolean.valueOf(it.toString())
-//            opt[idx++] = if ( it.toInt() ) true else false
+    fun strToOpt(): BooleanArray {
+        // 돌면서 넣어줌
+        for ((idx, it) in optString.trimEnd().split(" ").withIndex()) {
+            opt[idx] = it.toBoolean()
         }
+        return opt
     }
 }

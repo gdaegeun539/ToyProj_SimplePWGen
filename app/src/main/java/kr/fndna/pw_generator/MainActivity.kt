@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import kr.fndna.pw_generator.databinding.ActivityMainBinding
 
+// TODO 두번 뒤로가서 종료하기
 class MainActivity : AppCompatActivity() {
     /** chkset 배열 확인 요소
      * 0번 특수문자 1번 숫자 2번 소문자 3번 대문자 4번 비슷한거제외 5번 모호한거제외 */
@@ -27,6 +28,16 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         optSaveLoader = OptionsSaveLoadLogic(this, chkSet)
+        // 설정 파일 존재시 설정 배열에 불러옴
+        if (optSaveLoader.file.exists()) {
+            chkSet = optSaveLoader.loadChkSet()
+            binding.symbolSwitch.isChecked = chkSet[0]
+            binding.numberSwitch.isChecked = chkSet[1]
+            binding.lowerSwitch.isChecked = chkSet[2]
+            binding.upperSwitch.isChecked = chkSet[3]
+            binding.similarSwitch.isChecked = chkSet[4]
+            binding.ambigSwitch.isChecked = chkSet[5]
+        }
 
         // 스위치 리스너 로직
         switchListener()
@@ -69,14 +80,30 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    // 툴바 아이템 클릭 로직
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         super.onOptionsItemSelected(item)
-        applicationContext
-        //todo 내장 접근 밑 저장 로직 수행
-        return true
+
+        return when (item.itemId) {
+            R.id.save_options -> { // 내장 접근 및 저장 로직 수행
+                optSaveLoader.opt = chkSet
+                optSaveLoader.saveChkSet()
+                Toast.makeText(this, R.string.save_toast, Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> false // 혹시나 해서
+        }
     }
 
+    // 앱 닫기 전에 설정 저장
+    override fun onDestroy() {
+        super.onDestroy()
+        optSaveLoader.opt = chkSet
+        optSaveLoader.saveChkSet()
+    }
+    
     // 스위치 리스너 로직
+    // TODO 체크여부에 따른 비활성화 해야함
     private fun switchListener(){
         // 기호 포함 체크
         binding.symbolSwitch.setOnCheckedChangeListener { compoundButton, b ->
