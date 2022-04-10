@@ -3,6 +3,8 @@ package kr.fndna.pw_generator
 import android.content.Context
 import android.util.Log
 import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStreamWriter
 
 class OptionsSaveLoadLogic(appContext: Context?, var opt: BooleanArray) {
     val file = File(appContext?.getExternalFilesDir(null), "options.dat")
@@ -10,7 +12,8 @@ class OptionsSaveLoadLogic(appContext: Context?, var opt: BooleanArray) {
 
     // 설정 저장
     fun saveChkSet() {
-        var outputWriter = file.writer() // 스트림 열기
+        // 스트림 열기 - 덮어쓰기 모드
+        var outputWriter = OutputStreamWriter(FileOutputStream(file, false))
         optToStr()
         // 스트림 저장 및 닫기
         outputWriter.write(optString)
@@ -28,6 +31,7 @@ class OptionsSaveLoadLogic(appContext: Context?, var opt: BooleanArray) {
 
     // 배열 문자열화 - true/false 가 문자열화됨
     fun optToStr() {
+        optString = ""
         // 돌면서 더해줌
         for (op in opt) {
             optString += "$op "
@@ -38,6 +42,7 @@ class OptionsSaveLoadLogic(appContext: Context?, var opt: BooleanArray) {
     fun strToOpt(): BooleanArray {
         // 돌면서 넣어줌
         for ((idx, it) in optString.trimEnd().split(" ").withIndex()) {
+            Log.d("OptionsSaveLoadLogic", "$idx")
             opt[idx] = it.toBoolean()
         }
         return opt
