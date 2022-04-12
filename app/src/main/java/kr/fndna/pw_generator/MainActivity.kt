@@ -31,12 +31,15 @@ class MainActivity : AppCompatActivity() {
         // 설정 파일 존재시 설정 배열에 불러옴
         if (optSaveLoader.file.exists()) {
             chkSet = optSaveLoader.loadChkSet()
-            binding.symbolSwitch.isChecked = chkSet[0]
-            binding.numberSwitch.isChecked = chkSet[1]
-            binding.lowerSwitch.isChecked = chkSet[2]
-            binding.upperSwitch.isChecked = chkSet[3]
-            binding.similarSwitch.isChecked = chkSet[4]
-            binding.ambigSwitch.isChecked = chkSet[5]
+            // 파일 내용 비어있지 않을 때만 설정값 할당
+            if (chkSet.isNotEmpty()) {
+                binding.symbolSwitch.isChecked = chkSet[0]
+                binding.numberSwitch.isChecked = chkSet[1]
+                binding.lowerSwitch.isChecked = chkSet[2]
+                binding.upperSwitch.isChecked = chkSet[3]
+                binding.similarSwitch.isChecked = chkSet[4]
+                binding.ambigSwitch.isChecked = chkSet[5]
+            }
         }
 
         // 스위치 리스너 로직

@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter
 
 class OptionsSaveLoadLogic(appContext: Context?, var opt: BooleanArray) {
     val file = File(appContext?.getExternalFilesDir(null), "options.dat")
-    var optString = ""
+    var optString: String? = ""
 
     // 설정 저장
     fun saveChkSet() {
@@ -23,8 +23,9 @@ class OptionsSaveLoadLogic(appContext: Context?, var opt: BooleanArray) {
 
     fun loadChkSet(): BooleanArray {
         var inputReader = file.reader().buffered()
+        
+        // 스트림에서 불러오기 및 파싱
         optString = inputReader.readLine()
-
         opt = strToOpt()
         return opt
     }
@@ -40,11 +41,15 @@ class OptionsSaveLoadLogic(appContext: Context?, var opt: BooleanArray) {
     
     // 문자열 배열화
     fun strToOpt(): BooleanArray {
-        // 돌면서 넣어줌
-        for ((idx, it) in optString.trimEnd().split(" ").withIndex()) {
-            Log.d("OptionsSaveLoadLogic", "$idx")
-            opt[idx] = it.toBoolean()
+        // 혹시 파일이 비어있을 수 있음 - 파일이 비어있지 않을 때만 파싱 후 할당
+        if (!optString.isNullOrEmpty()) {
+            // 돌면서 넣어줌
+            for ((idx, it) in optString?.trimEnd()?.split(" ")?.withIndex()!!) {
+                Log.d("OptionsSaveLoadLogic", "$idx")
+                opt[idx] = it.toBoolean()
+            }
         }
+        
         return opt
     }
 }
