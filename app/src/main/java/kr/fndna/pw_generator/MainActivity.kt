@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
             chkSet = optSaveLoader.loadChkSet()
             // 파일 내용 비어있지 않을 때만 설정값 할당
             if (chkSet.isNotEmpty()) {
+                checkAmbigEnabled()
+                checkSimilarEnabled()
                 binding.symbolSwitch.isChecked = chkSet[0]
                 binding.numberSwitch.isChecked = chkSet[1]
                 binding.lowerSwitch.isChecked = chkSet[2]
@@ -106,23 +108,27 @@ class MainActivity : AppCompatActivity() {
     }
     
     // 스위치 리스너 로직
-    // TODO 체크여부에 따른 비활성화 해야함
     private fun switchListener(){
         // 기호 포함 체크
         binding.symbolSwitch.setOnCheckedChangeListener { compoundButton, b ->
             chkSet[0] = b
+            checkAmbigEnabled()
+            checkSimilarEnabled()
         }
         // 숫자 포함 체크
         binding.numberSwitch.setOnCheckedChangeListener { compoundButton, b ->
             chkSet[1] = b
+            checkSimilarEnabled()
         }
         // 소문자 포함 체크
         binding.lowerSwitch.setOnCheckedChangeListener { compoundButton, b ->
             chkSet[2] = b
+            checkSimilarEnabled()
         }
         // 대문자 포함 체크
         binding.upperSwitch.setOnCheckedChangeListener { compoundButton, b ->
             chkSet[3] = b
+            checkSimilarEnabled()
         }
         // 유사한 문자 제외 체크
         binding.similarSwitch.setOnCheckedChangeListener { compoundButton, b ->
@@ -131,6 +137,28 @@ class MainActivity : AppCompatActivity() {
         // 모호한 문자 제외 체크
         binding.ambigSwitch.setOnCheckedChangeListener { compoundButton, b ->
             chkSet[5] = b
+        }
+    }
+
+    // 모호한 문자 스위치 활성화 비활성화 로직
+    private fun checkAmbigEnabled() {
+        if (chkSet[0]) {
+            binding.ambigSwitch.isEnabled = true
+        } else {
+            binding.ambigSwitch.isChecked = false
+            binding.ambigSwitch.isEnabled = false
+            chkSet[5] = false
+        }
+    }
+
+    // 비슷한 문자 스위치 활성화 비활성화 로직
+    private fun checkSimilarEnabled() {
+        if (chkSet[0] || chkSet[1] || chkSet[2] || chkSet[3]) {
+            binding.similarSwitch.isEnabled = true
+        } else {
+            binding.similarSwitch.isChecked = false
+            binding.similarSwitch.isEnabled = false
+            chkSet[4] = false
         }
     }
 }
