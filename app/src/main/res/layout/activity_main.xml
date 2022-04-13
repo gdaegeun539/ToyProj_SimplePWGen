@@ -27,7 +27,6 @@
         android:layout_marginBottom="5dp"
         android:text="@string/top_settings"
         android:textSize="30sp"
-        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/lgth_layout"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -55,7 +54,6 @@
             android:layout_weight="6"
             android:text="@string/pw_length"
             android:textSize="16sp"
-            android:textColor="@color/black"
             android:gravity="center|start"/>
 
         <EditText
@@ -180,7 +178,9 @@
             android:enabled="false"
             android:layout_weight="12"
             android:textSize="16sp"
-            android:hint="@string/hint"/>
+            android:hint="@string/hint"
+            android:inputType="text"
+            tools:ignore="TextFields" />
 
         <Button
             android:id="@+id/copy_btn"
