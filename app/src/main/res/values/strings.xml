@@ -17,4 +17,5 @@
     <string name="clipboard_complete">Copied to clipboard.</string>
     <string name="save_options">Save Options</string>
     <string name="save_toast">Options was saved.</string>
+    <string name="back_pressed">Press the back button once more to exit.</string>
 </resources>

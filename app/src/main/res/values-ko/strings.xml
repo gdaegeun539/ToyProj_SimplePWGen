@@ -18,4 +18,5 @@
     <string name="clipboard_complete">클립보드에 복사되었습니다.</string>
     <string name="save_options">설정 저장하기</string>
     <string name="save_toast">설정이 저장되었습니다.</string>
+    <string name="back_pressed">뒤로가기 버튼을 한번 더 누르면 종료합니다.</string>
 </resources>

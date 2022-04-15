@@ -10,13 +10,13 @@ import android.view.MenuItem
 import android.widget.Toast
 import kr.fndna.pw_generator.databinding.ActivityMainBinding
 
-// TODO 두번 뒤로가서 종료하기
 class MainActivity : AppCompatActivity() {
     /** chkset 배열 확인 요소
      * 0번 특수문자 1번 숫자 2번 소문자 3번 대문자 4번 비슷한거제외 5번 모호한거제외 */
     var chkSet = BooleanArray(6)
     var pwdLen: Long = 0
     var makeString: String = ""
+    lateinit var backPressedLogic: BackPressedLogic
     lateinit var binding :ActivityMainBinding
     lateinit var logic :GenerateLogic
     lateinit var optSaveLoader: OptionsSaveLoadLogic
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+        backPressedLogic = BackPressedLogic(this)
 
         optSaveLoader = OptionsSaveLoadLogic(this, chkSet)
         // 설정 파일 존재시 설정 배열에 불러옴
@@ -98,6 +99,11 @@ class MainActivity : AppCompatActivity() {
             }
             else -> false // 혹시나 해서
         }
+    }
+
+    // 뒤로가기 두번 눌러 앱 끄기
+    override fun onBackPressed() {
+        backPressedLogic.onBackPressed()
     }
 
     // 앱 닫기 전에 설정 저장
