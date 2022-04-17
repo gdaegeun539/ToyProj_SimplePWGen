@@ -1,19 +1,19 @@
 <resources>
-    <string name="app_name">Password Generator</string>
-    <string name="pw_length">Password Length:</string>
+    <string name="app_name">Random word Generator</string>
+    <string name="pw_length">Random word Length:</string>
     <string name="symbols">Include Symbols:</string>
     <string name="numbers">Include Numbers:</string>
     <string name="lowercase">Include Lowercase Characters:</string>
     <string name="uppercase">Include Uppercase Characters:</string>
     <string name="similar">Exclude Similar Characters:</string>
     <string name="ambiguous">Exclude Ambiguous Characters:</string>
-    <string name="generate_pw">Generate Password</string>
+    <string name="generate_pw">Generate Random word</string>
     <string name="copy">Copy</string>
-    <string name="hint">Password to be generated here</string>
+    <string name="hint">Random word to be generated here</string>
     <string name="hint_length">Supports 6 ~ 128</string>
     <string name="top_settings">Options</string>
     <string name="pattern_not_match">Input length or option not Match!\nCheck the length and options.</string>
-    <string name="generate_successful">Password generation was successful.</string>
+    <string name="generate_successful">Random word generation was successful.</string>
     <string name="clipboard_complete">Copied to clipboard.</string>
     <string name="save_options">Save Options</string>
     <string name="save_toast">Options was saved.</string>
