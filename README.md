@@ -32,10 +32,23 @@
 ## 구현 기능
 
 ### 초기 화면
-![이름]()
+
+<p align="center">
+
+![splash_screen](/readme_assets/splash_screen.jpg)
+</p>
 
 ### 비밀번호 생성 화면
-![이름]()
+<p align="center">
+
+![complete_gen](/readme_assets/complete_gen.jpg)
+</p>
+
+### 설정 저장 화면
+<p align="center">
+
+![save_config](/readme_assets/save_config.jpg)
+</p>
 
 <br>
 
