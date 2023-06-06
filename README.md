@@ -23,9 +23,9 @@
 
 ## 기술 스택
 
-| Kotlin  | Intellij IDEA |
-|:-------:| :--------: |
-|![java]  | ![intellij] |
+|  Kotlin   | Intellij IDEA |
+|:---------:| :--------: |
+| ![kotlin] | ![intellij] |
 
 <br>
 
@@ -68,5 +68,5 @@ App Icons by [Icons8](https://icons8.com/)
 
 <!-- Stack Icon Refernces -->
 
-[//]: # ([kotlin]: )
+[kotlin]: https://upload.wikimedia.org/wikipedia/commons/0/06/Kotlin_Icon.svg 
 [intellij]: https://resources.jetbrains.com/storage/products/company/brand/logos/IntelliJ_IDEA_icon.svg
