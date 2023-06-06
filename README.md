@@ -34,20 +34,17 @@
 ### 초기 화면
 
 <p align="center">
-
-![splash_screen](/readme_assets/splash_screen.jpg)
+<img src="/readme_assets/splash_screen.jpg" alt="complete_gen"/ width=360 >
 </p>
 
 ### 비밀번호 생성 화면
 <p align="center">
-
-![complete_gen](/readme_assets/complete_gen.jpg)
+<img src="/readme_assets/complete_gen.jpg" alt="complete_gen"/ width=360 >
 </p>
 
 ### 설정 저장 화면
 <p align="center">
-
-![save_config](/readme_assets/save_config.jpg)
+<img src="/readme_assets/save_config.jpg" alt="complete_gen"/ width=360 >
 </p>
 
 <br>
