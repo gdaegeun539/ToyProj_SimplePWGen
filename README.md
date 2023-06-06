@@ -23,9 +23,9 @@
 
 ## 기술 스택
 
-|  Kotlin   | Intellij IDEA |
+|  Kotlin   | Android Studio |
 |:---------:| :--------: |
-| ![kotlin] | ![intellij] |
+| ![kotlin] | <img src="https://cdn.worldvectorlogo.com/logos/android-studio-1.svg" alt="andstudio" width=100 /> |
 
 <br>
 
@@ -79,4 +79,3 @@ App Icons by [Icons8](https://icons8.com/)
 <!-- Stack Icon Refernces -->
 
 [kotlin]: https://upload.wikimedia.org/wikipedia/commons/0/06/Kotlin_Icon.svg 
-[intellij]: https://resources.jetbrains.com/storage/products/company/brand/logos/IntelliJ_IDEA_icon.svg
